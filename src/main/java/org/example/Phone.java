@@ -36,21 +36,28 @@ public abstract class Phone {
     void addContact(String index, String phoneNumber, String firstName, String lastName) {
         if (index.equals("1") && this.firstContact == null) {
             this.firstContact = "Phone number: " + phoneNumber + " First name: " + firstName + " Last name: " + lastName;
-
-        }
-        if (index.equals("2") && this.lastContact == null && this.firstContact != this.lastContact) {
+        } else if (index.equals("2") && this.lastContact == null) {
             this.lastContact = "Phone number: " + phoneNumber + " First name: " + firstName + " Last name: " + lastName;
+        } else {
+            System.out.println("Index is to big for phone slots or there are already 2 existing contacts in phone memory");
         }
-
+        if (this.firstContact.equals(this.lastContact)) {
+            System.out.println("Please provide separate contacts");
+            this.lastContact = null;
+        }
     }
 
-    //    abstract void getFirstContact();
-//    abstract void getLastContact();
     void sendMessage(String phoneNumber, String messageContent) {
-        if (messageContent.length() <= 500) {
-
+        if (this.batteryLife <= 0) {
+            System.out.println("Phone is out of battery");
+            return;
         }
-        this.remainingBatteryLife--;
+        if (messageContent.length() <= 500) {
+            System.out.println("Message sent");
+            this.remainingBatteryLife--;
+        } else {
+            System.out.println("Exceeding character limit for a message");
+        }
     }
 
     //    abstract void getFirstMessage();
