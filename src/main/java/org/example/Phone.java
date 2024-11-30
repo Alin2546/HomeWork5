@@ -8,6 +8,9 @@ public abstract class Phone {
     private String IMEI;
     private String firstContact;
     private String lastContact;
+    private String[] firstContactMessages = new String[2];
+    private String[] lastContactMessages = new String[2];
+
 
     public String getLastContact() {
         System.out.println(lastContact);
@@ -48,10 +51,18 @@ public abstract class Phone {
     }
 
     void sendMessage(String phoneNumber, String messageContent) {
-        if (this.batteryLife <= 0) {
+        System.out.println(this.firstContact.substring(15,25));
+        if (this.remainingBatteryLife <= 0) {
             System.out.println("Phone is out of battery");
             return;
         }
+        if (this.firstContact.substring(15, 25).equals(phoneNumber) && this.firstContactMessages[0] == null) {
+            this.firstContactMessages[0] = messageContent;
+        } else if (this.firstContact.substring(15, 25).equals(phoneNumber) && this.firstContactMessages[1] == null) {
+            this.firstContactMessages[1] = messageContent;
+        }
+
+
         if (messageContent.length() <= 500) {
             System.out.println("Message sent");
             this.remainingBatteryLife--;
@@ -60,9 +71,29 @@ public abstract class Phone {
         }
     }
 
-    //    abstract void getFirstMessage();
-//    abstract void getSecondMessage();
+    void getFirstMessage(String phoneNumber) {
+        if (this.firstContact.substring(15, 25).equals(phoneNumber)) {
+            System.out.println(this.firstContactMessages[0]);
+        }
+        if (this.lastContact.substring(15, 25).equals(phoneNumber)) {
+            System.out.println(this.firstContactMessages[1]);
+        }
+    }
+
+    void getSecondMessage(String phoneNumber) {
+        if (this.firstContact.substring(15, 25).equals(phoneNumber)) {
+            System.out.println(this.lastContactMessages[0]);
+        }
+        if (this.lastContact.substring(15, 25).equals(phoneNumber)) {
+            System.out.println(this.lastContactMessages[1]);
+        }
+    }
+
     void call(String phoneNumber) {
+        if (this.remainingBatteryLife <= 1) {
+            System.out.println("Phone is out of battery");
+            return;
+        }
         this.remainingBatteryLife -= 2;
     }
 //    abstract void viewHistory();
