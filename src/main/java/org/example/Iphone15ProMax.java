@@ -13,7 +13,7 @@ public class Iphone15ProMax extends Iphone {
      * <ul>
      *     <li>Battery Life: 90 hours</li>
      *     <li>Color: Flower Purple</li>
-     *     <li>Material: Adamantium</li> ->> a fictional alloy from comic books
+     *     <li>Material: Adamantium --> a fictional alloy from comic books </li>
      *     <li>IMEI: 083214771134</li>
      * </ul>
      */

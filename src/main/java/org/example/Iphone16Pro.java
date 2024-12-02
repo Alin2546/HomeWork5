@@ -11,7 +11,7 @@ public class Iphone16Pro extends Iphone{
      * <ul>
      *     <li>Battery Life: 98 hours</li>
      *     <li>Color: Infinity Blue</li>
-     *     <li>Material: Tungsten</li> --> clearly not a material used for a phone casing
+     *     <li>Material: Tungsten --> clearly not a material used for a phone casing </li>
      *     <li>IMEI: 084221134532</li>
      * </ul>
      */
