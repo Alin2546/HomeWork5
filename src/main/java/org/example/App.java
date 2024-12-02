@@ -1,36 +1,48 @@
 package org.example;
 
 /**
- * Hello world!
+ * The main entry point of the application. Demonstrates the use of
+ * the SamsungGalaxy6 phone class, including adding contacts,
+ * sending messages, making calls, and viewing message history.
  */
 public class App {
-    public static void main(String[] args) {
-       // Phone phone= new Samsung(); // shouldn't compile
+    /**
+     * @param args Command line arguments.
+     */
 
+    public static void main(String[] args) {
+        // Uncommenting the following line will result in a compilation error
+        // because the Samsung class is abstract and cannot be instantiated.
+        // Phone phone = new Samsung(); shouldn't compile
+
+        // Create a new instance of SamsungGalaxy6
         Phone phone = new SamsungGalaxy6();
 
-        phone.addContact("1", "phone number", "first name", "last name");
+        // Add contacts to the phone
+        phone.addContact("1", "0751777343", "Anghel", "Alin");
+        phone.addContact("2", "0786723723", "Ionel", "Daniel");
 
-        phone.addContact("2", "second phone number", "second first name", "second last name");
-
+        // Retrieve and display the first and last contact
         phone.getFirstContact();
-
         phone.getLastContact();
 
-// send a message to the first contact from the previously listed
+        // send a message to the first contact from the previously listed
+        // max number of characters - 100
 
-// max number of characters - 100
+        phone.sendMessage("0751777343", "message content1");
+        phone.sendMessage("0751777343", "message content2");
 
-        phone.sendMessage("phone number", "message content");
+        // Retrieve and display the first and second messages sent to the first contact
+        phone.getFirstMessage("0751777343");
+        phone.getSecondMessage("0751777343");
 
-        phone.getFirstMessage("phone number");
+        // make a call to the first contact and some random numbers
 
-        phone.getSecondMessage("phone number");
+        phone.call("0751777343");
+        phone.call("0723123123");
+        phone.call("0786712223");
+        phone.call("0722523420");
 
-// make a call to the second contact from the previously listed
-
-        phone.call("second phone number");
-
-        // phone.viewHistory();
+        phone.viewHistory();
     }
 }
